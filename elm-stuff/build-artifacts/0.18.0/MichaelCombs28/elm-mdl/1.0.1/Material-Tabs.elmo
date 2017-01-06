@@ -1,0 +1,256 @@
+var _MichaelCombs28$elm_mdl$Material_Tabs$activeTab = function (k) {
+	return _MichaelCombs28$elm_mdl$Material_Options$set(
+		function (config) {
+			return _elm_lang$core$Native_Utils.update(
+				config,
+				{activeTab: k});
+		});
+};
+var _MichaelCombs28$elm_mdl$Material_Tabs$onSelectTab = function (k) {
+	return _MichaelCombs28$elm_mdl$Material_Options$set(
+		function (config) {
+			return _elm_lang$core$Native_Utils.update(
+				config,
+				{
+					onSelectTab: _elm_lang$core$Maybe$Just(k)
+				});
+		});
+};
+var _MichaelCombs28$elm_mdl$Material_Tabs$ripple = _MichaelCombs28$elm_mdl$Material_Options$set(
+	function (options) {
+		return _elm_lang$core$Native_Utils.update(
+			options,
+			{ripple: true});
+	});
+var _MichaelCombs28$elm_mdl$Material_Tabs$defaultConfig = {ripple: false, onSelectTab: _elm_lang$core$Maybe$Nothing, activeTab: 0};
+var _MichaelCombs28$elm_mdl$Material_Tabs$defaultModel = {ripples: _elm_lang$core$Dict$empty};
+var _MichaelCombs28$elm_mdl$Material_Tabs$Model = function (a) {
+	return {ripples: a};
+};
+var _MichaelCombs28$elm_mdl$Material_Tabs$Config = F3(
+	function (a, b, c) {
+		return {ripple: a, onSelectTab: b, activeTab: c};
+	});
+var _MichaelCombs28$elm_mdl$Material_Tabs$Ripple = F2(
+	function (a, b) {
+		return {ctor: 'Ripple', _0: a, _1: b};
+	});
+var _MichaelCombs28$elm_mdl$Material_Tabs$update = F2(
+	function (action, model) {
+		var _p0 = action;
+		var _p2 = _p0._0;
+		var _p1 = A2(
+			_MichaelCombs28$elm_mdl$Material_Ripple$update,
+			_p0._1,
+			A2(
+				_elm_lang$core$Maybe$withDefault,
+				_MichaelCombs28$elm_mdl$Material_Ripple$model,
+				A2(_elm_lang$core$Dict$get, _p2, model.ripples)));
+		var ripple_ = _p1._0;
+		var cmd = _p1._1;
+		return {
+			ctor: '_Tuple2',
+			_0: _elm_lang$core$Native_Utils.update(
+				model,
+				{
+					ripples: A3(_elm_lang$core$Dict$insert, _p2, ripple_, model.ripples)
+				}),
+			_1: A2(
+				_elm_lang$core$Platform_Cmd$map,
+				_MichaelCombs28$elm_mdl$Material_Tabs$Ripple(_p2),
+				cmd)
+		};
+	});
+var _MichaelCombs28$elm_mdl$Material_Tabs$view = F5(
+	function (lift, model, options, tabs, tabContent) {
+		var wrapContent = A2(
+			_elm_lang$html$Html_Keyed$node,
+			'div',
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$classList(
+					{
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'mdl-tab__panel', _1: true},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'is-active', _1: true},
+							_1: {ctor: '[]'}
+						}
+					}),
+				_1: {ctor: '[]'}
+			});
+		var summary = A2(_MichaelCombs28$elm_mdl$Material_Options$collect, _MichaelCombs28$elm_mdl$Material_Tabs$defaultConfig, options);
+		var config = summary.config;
+		var unwrapLabel = F2(
+			function (tabIdx, _p3) {
+				var _p4 = _p3;
+				var _p6 = _p4._0._1;
+				return A3(
+					_MichaelCombs28$elm_mdl$Material_Options$styled,
+					_elm_lang$html$Html$a,
+					A2(
+						_elm_lang$core$Basics_ops['++'],
+						{
+							ctor: '::',
+							_0: _MichaelCombs28$elm_mdl$Material_Options$cs('mdl-tabs__tab'),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_MichaelCombs28$elm_mdl$Material_Options$when,
+									_MichaelCombs28$elm_mdl$Material_Options$cs('is-active'),
+									_elm_lang$core$Native_Utils.eq(tabIdx, config.activeTab)),
+								_1: {
+									ctor: '::',
+									_0: A2(
+										_elm_lang$core$Maybe$withDefault,
+										_MichaelCombs28$elm_mdl$Material_Options$nop,
+										A2(
+											_elm_lang$core$Maybe$map,
+											function (t) {
+												return _MichaelCombs28$elm_mdl$Material_Options_Internal$attribute(
+													_elm_lang$html$Html_Events$onClick(
+														t(tabIdx)));
+											},
+											config.onSelectTab)),
+									_1: {ctor: '[]'}
+								}
+							}
+						},
+						_p4._0._0),
+					config.ripple ? _elm_lang$core$List$concat(
+						{
+							ctor: '::',
+							_0: _p6,
+							_1: {
+								ctor: '::',
+								_0: {
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$map,
+										function (_p5) {
+											return lift(
+												A2(_MichaelCombs28$elm_mdl$Material_Tabs$Ripple, tabIdx, _p5));
+										},
+										A2(
+											_MichaelCombs28$elm_mdl$Material_Ripple$view,
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$classList(
+													{
+														ctor: '::',
+														_0: {ctor: '_Tuple2', _0: 'mdl-tabs__ripple-container', _1: true},
+														_1: {
+															ctor: '::',
+															_0: {ctor: '_Tuple2', _0: 'mdl-tabs__ripple-js-effect', _1: true},
+															_1: {ctor: '[]'}
+														}
+													}),
+												_1: {ctor: '[]'}
+											},
+											A2(
+												_elm_lang$core$Maybe$withDefault,
+												_MichaelCombs28$elm_mdl$Material_Ripple$model,
+												A2(_elm_lang$core$Dict$get, tabIdx, model.ripples)))),
+									_1: {ctor: '[]'}
+								},
+								_1: {ctor: '[]'}
+							}
+						}) : _p6);
+			});
+		var links = A3(
+			_MichaelCombs28$elm_mdl$Material_Options$styled,
+			_elm_lang$html$Html$div,
+			{
+				ctor: '::',
+				_0: _MichaelCombs28$elm_mdl$Material_Options$cs('mdl-tabs__tab-bar'),
+				_1: {ctor: '[]'}
+			},
+			A2(_elm_lang$core$List$indexedMap, unwrapLabel, tabs));
+		return A5(
+			_MichaelCombs28$elm_mdl$Material_Options$apply,
+			summary,
+			_elm_lang$html$Html$div,
+			{
+				ctor: '::',
+				_0: _MichaelCombs28$elm_mdl$Material_Options$cs('mdl-tabs'),
+				_1: {
+					ctor: '::',
+					_0: _MichaelCombs28$elm_mdl$Material_Options$cs('mdl-js-tabs'),
+					_1: {
+						ctor: '::',
+						_0: _MichaelCombs28$elm_mdl$Material_Options$cs('is-upgraded'),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_MichaelCombs28$elm_mdl$Material_Options$when,
+								_MichaelCombs28$elm_mdl$Material_Options$cs('mdl-js-ripple-effect'),
+								config.ripple),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_MichaelCombs28$elm_mdl$Material_Options$when,
+									_MichaelCombs28$elm_mdl$Material_Options$cs('mdl-js-ripple-effect--ignore-events'),
+									config.ripple),
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			},
+			{ctor: '[]'},
+			{
+				ctor: '::',
+				_0: links,
+				_1: {
+					ctor: '::',
+					_0: wrapContent(
+						{
+							ctor: '::',
+							_0: {
+								ctor: '_Tuple2',
+								_0: _elm_lang$core$Basics$toString(config.activeTab),
+								_1: A2(
+									_elm_lang$html$Html$div,
+									{ctor: '[]'},
+									tabContent)
+							},
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				}
+			});
+	});
+var _MichaelCombs28$elm_mdl$Material_Tabs$render = A5(
+	_MichaelCombs28$elm_parts$Parts$create,
+	_MichaelCombs28$elm_mdl$Material_Tabs$view,
+	_MichaelCombs28$elm_parts$Parts$generalize(_MichaelCombs28$elm_mdl$Material_Tabs$update),
+	function (_) {
+		return _.tabs;
+	},
+	F2(
+		function (x, y) {
+			return _elm_lang$core$Native_Utils.update(
+				y,
+				{tabs: x});
+		}),
+	_MichaelCombs28$elm_mdl$Material_Tabs$defaultModel);
+var _MichaelCombs28$elm_mdl$Material_Tabs$Label = function (a) {
+	return {ctor: 'Label', _0: a};
+};
+var _MichaelCombs28$elm_mdl$Material_Tabs$label = F2(
+	function (p, c) {
+		return _MichaelCombs28$elm_mdl$Material_Tabs$Label(
+			{ctor: '_Tuple2', _0: p, _1: c});
+	});
+var _MichaelCombs28$elm_mdl$Material_Tabs$textLabel = F2(
+	function (p, c) {
+		return A2(
+			_MichaelCombs28$elm_mdl$Material_Tabs$label,
+			p,
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html$text(c),
+				_1: {ctor: '[]'}
+			});
+	});

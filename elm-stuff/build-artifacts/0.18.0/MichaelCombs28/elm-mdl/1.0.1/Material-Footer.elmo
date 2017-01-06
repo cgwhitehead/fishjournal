@@ -1,0 +1,440 @@
+var _MichaelCombs28$elm_mdl$Material_Footer$tempPrefix = '{{prefix}}';
+var _MichaelCombs28$elm_mdl$Material_Footer$prefixRegex = _elm_lang$core$Regex$regex(_MichaelCombs28$elm_mdl$Material_Footer$tempPrefix);
+var _MichaelCombs28$elm_mdl$Material_Footer$removePrefix = A3(
+	_elm_lang$core$Regex$replace,
+	_elm_lang$core$Regex$All,
+	_MichaelCombs28$elm_mdl$Material_Footer$prefixRegex,
+	function (_p0) {
+		return '';
+	});
+var _MichaelCombs28$elm_mdl$Material_Footer$prefixedClass = function (cls) {
+	return _MichaelCombs28$elm_mdl$Material_Options$cs(
+		A2(_elm_lang$core$Basics_ops['++'], _MichaelCombs28$elm_mdl$Material_Footer$tempPrefix, cls));
+};
+var _MichaelCombs28$elm_mdl$Material_Footer$socialBtn = _MichaelCombs28$elm_mdl$Material_Footer$prefixedClass('social-btn');
+var _MichaelCombs28$elm_mdl$Material_Footer$headingClass = _MichaelCombs28$elm_mdl$Material_Footer$prefixedClass('heading');
+var _MichaelCombs28$elm_mdl$Material_Footer$href = function (_p1) {
+	return _MichaelCombs28$elm_mdl$Material_Options_Internal$attribute(
+		_elm_lang$html$Html_Attributes$href(_p1));
+};
+var _MichaelCombs28$elm_mdl$Material_Footer$onClick = function (_p2) {
+	return _MichaelCombs28$elm_mdl$Material_Options_Internal$attribute(
+		_elm_lang$html$Html_Events$onClick(_p2));
+};
+var _MichaelCombs28$elm_mdl$Material_Footer$separator = '__';
+var _MichaelCombs28$elm_mdl$Material_Footer$prefix = function (tp) {
+	var _p3 = tp;
+	if (_p3.ctor === 'Mini') {
+		return 'mdl-mini-footer';
+	} else {
+		return 'mdl-mega-footer';
+	}
+};
+var _MichaelCombs28$elm_mdl$Material_Footer$applyPrefix = F2(
+	function (tp, prop) {
+		var sep = _MichaelCombs28$elm_mdl$Material_Footer$separator;
+		var pref = _MichaelCombs28$elm_mdl$Material_Footer$prefix(tp);
+		var _p4 = prop;
+		switch (_p4.ctor) {
+			case 'Class':
+				var _p5 = _p4._0;
+				return A2(_elm_lang$core$String$startsWith, _MichaelCombs28$elm_mdl$Material_Footer$tempPrefix, _p5) ? _MichaelCombs28$elm_mdl$Material_Options$cs(
+					A2(
+						_elm_lang$core$Basics_ops['++'],
+						pref,
+						A2(
+							_elm_lang$core$Basics_ops['++'],
+							sep,
+							_MichaelCombs28$elm_mdl$Material_Footer$removePrefix(_p5)))) : prop;
+			case 'Many':
+				return _MichaelCombs28$elm_mdl$Material_Options$many(
+					A2(
+						_elm_lang$core$List$map,
+						_MichaelCombs28$elm_mdl$Material_Footer$applyPrefix(tp),
+						_p4._0));
+			default:
+				return prop;
+		}
+	});
+var _MichaelCombs28$elm_mdl$Material_Footer$toHtml = F2(
+	function (tp, _p6) {
+		var _p7 = _p6;
+		var styles_ = A2(
+			_elm_lang$core$List$map,
+			_MichaelCombs28$elm_mdl$Material_Footer$applyPrefix(tp),
+			_p7.styles);
+		return A3(
+			_MichaelCombs28$elm_mdl$Material_Options$styled,
+			_p7.elem,
+			styles_,
+			A2(
+				_elm_lang$core$List$map,
+				_MichaelCombs28$elm_mdl$Material_Footer$contentToHtml(tp),
+				_p7.content));
+	});
+var _MichaelCombs28$elm_mdl$Material_Footer$contentToHtml = F2(
+	function (tp, content) {
+		var _p8 = content;
+		if (_p8.ctor === 'HtmlContent') {
+			return _p8._0;
+		} else {
+			return A2(_MichaelCombs28$elm_mdl$Material_Footer$toHtml, tp, _p8._0);
+		}
+	});
+var _MichaelCombs28$elm_mdl$Material_Footer$sectionContent = F3(
+	function (tp, section, content) {
+		var sep = _MichaelCombs28$elm_mdl$Material_Footer$separator;
+		var pref = _MichaelCombs28$elm_mdl$Material_Footer$prefix(tp);
+		var _p9 = content;
+		if (_p9.ctor === 'HtmlContent') {
+			return A3(
+				_MichaelCombs28$elm_mdl$Material_Options$styled,
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _MichaelCombs28$elm_mdl$Material_Options$cs(
+						A2(
+							_elm_lang$core$Basics_ops['++'],
+							pref,
+							A2(_elm_lang$core$Basics_ops['++'], sep, section))),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: _p9._0,
+					_1: {ctor: '[]'}
+				});
+		} else {
+			return A3(
+				_MichaelCombs28$elm_mdl$Material_Options$styled,
+				_p9._0.elem,
+				{
+					ctor: '::',
+					_0: _MichaelCombs28$elm_mdl$Material_Options$cs(
+						A2(
+							_elm_lang$core$Basics_ops['++'],
+							pref,
+							A2(_elm_lang$core$Basics_ops['++'], sep, section))),
+					_1: _p9._0.styles
+				},
+				A2(
+					_elm_lang$core$List$map,
+					_MichaelCombs28$elm_mdl$Material_Footer$contentToHtml(tp),
+					_p9._0.content));
+		}
+	});
+var _MichaelCombs28$elm_mdl$Material_Footer$leftHtml = F2(
+	function (tp, left) {
+		var _p10 = left;
+		if (_p10.ctor === 'Just') {
+			return {
+				ctor: '::',
+				_0: A3(_MichaelCombs28$elm_mdl$Material_Footer$sectionContent, tp, 'left-section', _p10._0._0),
+				_1: {ctor: '[]'}
+			};
+		} else {
+			return {ctor: '[]'};
+		}
+	});
+var _MichaelCombs28$elm_mdl$Material_Footer$rightHtml = F2(
+	function (tp, right) {
+		var _p11 = right;
+		if (_p11.ctor === 'Just') {
+			return {
+				ctor: '::',
+				_0: A3(_MichaelCombs28$elm_mdl$Material_Footer$sectionContent, tp, 'right-section', _p11._0._0),
+				_1: {ctor: '[]'}
+			};
+		} else {
+			return {ctor: '[]'};
+		}
+	});
+var _MichaelCombs28$elm_mdl$Material_Footer$Footer = F3(
+	function (a, b, c) {
+		return {styles: a, content: b, elem: c};
+	});
+var _MichaelCombs28$elm_mdl$Material_Footer$MiniFooter = F2(
+	function (a, b) {
+		return {left: a, right: b};
+	});
+var _MichaelCombs28$elm_mdl$Material_Footer$MegaFooter = F3(
+	function (a, b, c) {
+		return {top: a, bottom: b, middle: c};
+	});
+var _MichaelCombs28$elm_mdl$Material_Footer$Mega = {ctor: 'Mega'};
+var _MichaelCombs28$elm_mdl$Material_Footer$mega = F2(
+	function (props, _p12) {
+		var _p13 = _p12;
+		var sep = _MichaelCombs28$elm_mdl$Material_Footer$separator;
+		var tp = _MichaelCombs28$elm_mdl$Material_Footer$Mega;
+		var pref = _MichaelCombs28$elm_mdl$Material_Footer$prefix(tp);
+		var topContent = function () {
+			var _p14 = _p13.top;
+			if (_p14.ctor === 'Nothing') {
+				return {ctor: '[]'};
+			} else {
+				return {
+					ctor: '::',
+					_0: A3(
+						_MichaelCombs28$elm_mdl$Material_Options$styled,
+						_elm_lang$html$Html$div,
+						{
+							ctor: '::',
+							_0: _MichaelCombs28$elm_mdl$Material_Options$cs(
+								A2(
+									_elm_lang$core$Basics_ops['++'],
+									pref,
+									A2(_elm_lang$core$Basics_ops['++'], sep, 'top-section'))),
+							_1: _p14._0._0.props
+						},
+						A2(
+							_elm_lang$core$Basics_ops['++'],
+							A2(_MichaelCombs28$elm_mdl$Material_Footer$leftHtml, tp, _p14._0._0.left),
+							A2(_MichaelCombs28$elm_mdl$Material_Footer$rightHtml, tp, _p14._0._0.right))),
+					_1: {ctor: '[]'}
+				};
+			}
+		}();
+		var middleContent = function () {
+			var _p15 = _p13.middle;
+			if (_p15.ctor === 'Nothing') {
+				return {ctor: '[]'};
+			} else {
+				return {
+					ctor: '::',
+					_0: A3(
+						_MichaelCombs28$elm_mdl$Material_Options$styled,
+						_elm_lang$html$Html$div,
+						{
+							ctor: '::',
+							_0: _MichaelCombs28$elm_mdl$Material_Options$cs(
+								A2(
+									_elm_lang$core$Basics_ops['++'],
+									pref,
+									A2(_elm_lang$core$Basics_ops['++'], sep, 'middle-section'))),
+							_1: _p15._0._0.props
+						},
+						A2(
+							_elm_lang$core$List$map,
+							_MichaelCombs28$elm_mdl$Material_Footer$contentToHtml(tp),
+							_p15._0._0.content)),
+					_1: {ctor: '[]'}
+				};
+			}
+		}();
+		var bottomContent = function () {
+			var _p16 = _p13.bottom;
+			if (_p16.ctor === 'Nothing') {
+				return {ctor: '[]'};
+			} else {
+				return {
+					ctor: '::',
+					_0: A3(
+						_MichaelCombs28$elm_mdl$Material_Options$styled,
+						_elm_lang$html$Html$div,
+						{
+							ctor: '::',
+							_0: _MichaelCombs28$elm_mdl$Material_Options$cs(
+								A2(
+									_elm_lang$core$Basics_ops['++'],
+									pref,
+									A2(_elm_lang$core$Basics_ops['++'], sep, 'bottom-section'))),
+							_1: _p16._0._0.props
+						},
+						A2(
+							_elm_lang$core$Basics_ops['++'],
+							{ctor: '[]'},
+							A2(
+								_elm_lang$core$List$map,
+								_MichaelCombs28$elm_mdl$Material_Footer$contentToHtml(tp),
+								_p16._0._0.content))),
+					_1: {ctor: '[]'}
+				};
+			}
+		}();
+		return A3(
+			_MichaelCombs28$elm_mdl$Material_Options$styled,
+			_elm_lang$html$Html$footer,
+			{
+				ctor: '::',
+				_0: _MichaelCombs28$elm_mdl$Material_Options$cs(pref),
+				_1: props
+			},
+			A2(
+				_elm_lang$core$Basics_ops['++'],
+				topContent,
+				A2(_elm_lang$core$Basics_ops['++'], middleContent, bottomContent)));
+	});
+var _MichaelCombs28$elm_mdl$Material_Footer$Mini = {ctor: 'Mini'};
+var _MichaelCombs28$elm_mdl$Material_Footer$mini = F2(
+	function (props, _p17) {
+		var _p18 = _p17;
+		var tp = _MichaelCombs28$elm_mdl$Material_Footer$Mini;
+		var pref = _MichaelCombs28$elm_mdl$Material_Footer$prefix(tp);
+		var leftContent = A2(_MichaelCombs28$elm_mdl$Material_Footer$leftHtml, tp, _p18.left);
+		var rightContent = A2(_MichaelCombs28$elm_mdl$Material_Footer$rightHtml, tp, _p18.right);
+		return A3(
+			_MichaelCombs28$elm_mdl$Material_Options$styled,
+			_elm_lang$html$Html$footer,
+			{
+				ctor: '::',
+				_0: _MichaelCombs28$elm_mdl$Material_Options$cs(pref),
+				_1: props
+			},
+			A2(_elm_lang$core$Basics_ops['++'], leftContent, rightContent));
+	});
+var _MichaelCombs28$elm_mdl$Material_Footer$FooterProperty = {ctor: 'FooterProperty'};
+var _MichaelCombs28$elm_mdl$Material_Footer$Content = function (a) {
+	return {ctor: 'Content', _0: a};
+};
+var _MichaelCombs28$elm_mdl$Material_Footer$logo = F2(
+	function (styles, content) {
+		return _MichaelCombs28$elm_mdl$Material_Footer$Content(
+			{
+				styles: {
+					ctor: '::',
+					_0: _MichaelCombs28$elm_mdl$Material_Options$cs('mdl-logo'),
+					_1: styles
+				},
+				content: content,
+				elem: _elm_lang$html$Html$div
+			});
+	});
+var _MichaelCombs28$elm_mdl$Material_Footer$links = F2(
+	function (styles, content) {
+		return _MichaelCombs28$elm_mdl$Material_Footer$Content(
+			{
+				styles: {
+					ctor: '::',
+					_0: _MichaelCombs28$elm_mdl$Material_Footer$prefixedClass('link-list'),
+					_1: styles
+				},
+				content: content,
+				elem: _elm_lang$html$Html$ul
+			});
+	});
+var _MichaelCombs28$elm_mdl$Material_Footer$linkItem = F2(
+	function (styles, content) {
+		return _MichaelCombs28$elm_mdl$Material_Footer$Content(
+			{
+				styles: {ctor: '[]'},
+				content: {
+					ctor: '::',
+					_0: _MichaelCombs28$elm_mdl$Material_Footer$Content(
+						{styles: styles, content: content, elem: _elm_lang$html$Html$a}),
+					_1: {ctor: '[]'}
+				},
+				elem: _elm_lang$html$Html$li
+			});
+	});
+var _MichaelCombs28$elm_mdl$Material_Footer$heading = F2(
+	function (styles, content) {
+		return _MichaelCombs28$elm_mdl$Material_Footer$Content(
+			{
+				styles: {ctor: '::', _0: _MichaelCombs28$elm_mdl$Material_Footer$headingClass, _1: styles},
+				content: content,
+				elem: _elm_lang$html$Html$h1
+			});
+	});
+var _MichaelCombs28$elm_mdl$Material_Footer$socialButton = F2(
+	function (styles, content) {
+		return _MichaelCombs28$elm_mdl$Material_Footer$Content(
+			{
+				styles: {ctor: '::', _0: _MichaelCombs28$elm_mdl$Material_Footer$socialBtn, _1: styles},
+				content: content,
+				elem: _elm_lang$html$Html$button
+			});
+	});
+var _MichaelCombs28$elm_mdl$Material_Footer$HtmlContent = function (a) {
+	return {ctor: 'HtmlContent', _0: a};
+};
+var _MichaelCombs28$elm_mdl$Material_Footer$checkbox = _MichaelCombs28$elm_mdl$Material_Footer$HtmlContent(
+	A2(
+		_elm_lang$html$Html$input,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('mdl-mega-footer__heading-checkbox'),
+			_1: {
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$type_('checkbox'),
+				_1: {
+					ctor: '::',
+					_0: A2(_elm_lang$html$Html_Attributes$attribute, 'checked', ''),
+					_1: {ctor: '[]'}
+				}
+			}
+		},
+		{ctor: '[]'}));
+var _MichaelCombs28$elm_mdl$Material_Footer$dropdown = F2(
+	function (props, content) {
+		return _MichaelCombs28$elm_mdl$Material_Footer$Content(
+			{
+				styles: {
+					ctor: '::',
+					_0: _MichaelCombs28$elm_mdl$Material_Options$cs('mdl-mega-footer__drop-down-section'),
+					_1: props
+				},
+				content: {ctor: '::', _0: _MichaelCombs28$elm_mdl$Material_Footer$checkbox, _1: content},
+				elem: _elm_lang$html$Html$div
+			});
+	});
+var _MichaelCombs28$elm_mdl$Material_Footer$html = _MichaelCombs28$elm_mdl$Material_Footer$HtmlContent;
+var _MichaelCombs28$elm_mdl$Material_Footer$link = F2(
+	function (styles, contents) {
+		return _MichaelCombs28$elm_mdl$Material_Footer$html(
+			A3(_MichaelCombs28$elm_mdl$Material_Options$styled, _elm_lang$html$Html$a, styles, contents));
+	});
+var _MichaelCombs28$elm_mdl$Material_Footer$li = F2(
+	function (styles, content) {
+		return _MichaelCombs28$elm_mdl$Material_Footer$html(
+			A3(_MichaelCombs28$elm_mdl$Material_Options$styled, _elm_lang$html$Html$li, styles, content));
+	});
+var _MichaelCombs28$elm_mdl$Material_Footer$Section = function (a) {
+	return {ctor: 'Section', _0: a};
+};
+var _MichaelCombs28$elm_mdl$Material_Footer$left = F2(
+	function (styles, content) {
+		return function (_p19) {
+			return _elm_lang$core$Maybe$Just(
+				_MichaelCombs28$elm_mdl$Material_Footer$Section(_p19));
+		}(
+			_MichaelCombs28$elm_mdl$Material_Footer$Content(
+				{styles: styles, content: content, elem: _elm_lang$html$Html$div}));
+	});
+var _MichaelCombs28$elm_mdl$Material_Footer$right = F2(
+	function (styles, content) {
+		return function (_p20) {
+			return _elm_lang$core$Maybe$Just(
+				_MichaelCombs28$elm_mdl$Material_Footer$Section(_p20));
+		}(
+			_MichaelCombs28$elm_mdl$Material_Footer$Content(
+				{styles: styles, content: content, elem: _elm_lang$html$Html$div}));
+	});
+var _MichaelCombs28$elm_mdl$Material_Footer$TopSection = function (a) {
+	return {ctor: 'TopSection', _0: a};
+};
+var _MichaelCombs28$elm_mdl$Material_Footer$top = F2(
+	function (props, _p21) {
+		var _p22 = _p21;
+		return _elm_lang$core$Maybe$Just(
+			_MichaelCombs28$elm_mdl$Material_Footer$TopSection(
+				{left: _p22.left, right: _p22.right, props: props}));
+	});
+var _MichaelCombs28$elm_mdl$Material_Footer$BottomSection = function (a) {
+	return {ctor: 'BottomSection', _0: a};
+};
+var _MichaelCombs28$elm_mdl$Material_Footer$bottom = F2(
+	function (props, content) {
+		return _elm_lang$core$Maybe$Just(
+			_MichaelCombs28$elm_mdl$Material_Footer$BottomSection(
+				{props: props, content: content}));
+	});
+var _MichaelCombs28$elm_mdl$Material_Footer$MiddleSection = function (a) {
+	return {ctor: 'MiddleSection', _0: a};
+};
+var _MichaelCombs28$elm_mdl$Material_Footer$middle = F2(
+	function (props, content) {
+		return _elm_lang$core$Maybe$Just(
+			_MichaelCombs28$elm_mdl$Material_Footer$MiddleSection(
+				{props: props, content: content}));
+	});

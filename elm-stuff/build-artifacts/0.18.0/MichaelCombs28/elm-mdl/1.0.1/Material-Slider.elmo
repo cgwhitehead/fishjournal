@@ -1,0 +1,241 @@
+var _MichaelCombs28$elm_mdl$Material_Slider$floatVal = A2(
+	_elm_lang$core$Json_Decode$at,
+	{
+		ctor: '::',
+		_0: 'target',
+		_1: {
+			ctor: '::',
+			_0: 'valueAsNumber',
+			_1: {ctor: '[]'}
+		}
+	},
+	_elm_lang$core$Json_Decode$float);
+var _MichaelCombs28$elm_mdl$Material_Slider$onChange = function (l) {
+	return _MichaelCombs28$elm_mdl$Material_Options$set(
+		function (options) {
+			return _elm_lang$core$Native_Utils.update(
+				options,
+				{
+					listener: _elm_lang$core$Maybe$Just(l)
+				});
+		});
+};
+var _MichaelCombs28$elm_mdl$Material_Slider$disabled = _MichaelCombs28$elm_mdl$Material_Options$set(
+	function (options) {
+		return _elm_lang$core$Native_Utils.update(
+			options,
+			{disabled: true});
+	});
+var _MichaelCombs28$elm_mdl$Material_Slider$step = function (v) {
+	return _MichaelCombs28$elm_mdl$Material_Options$set(
+		function (options) {
+			return _elm_lang$core$Native_Utils.update(
+				options,
+				{step: v});
+		});
+};
+var _MichaelCombs28$elm_mdl$Material_Slider$max = function (v) {
+	return _MichaelCombs28$elm_mdl$Material_Options$set(
+		function (options) {
+			return _elm_lang$core$Native_Utils.update(
+				options,
+				{max: v});
+		});
+};
+var _MichaelCombs28$elm_mdl$Material_Slider$min = function (v) {
+	return _MichaelCombs28$elm_mdl$Material_Options$set(
+		function (options) {
+			return _elm_lang$core$Native_Utils.update(
+				options,
+				{min: v});
+		});
+};
+var _MichaelCombs28$elm_mdl$Material_Slider$value = function (v) {
+	return _MichaelCombs28$elm_mdl$Material_Options$set(
+		function (options) {
+			return _elm_lang$core$Native_Utils.update(
+				options,
+				{value: v});
+		});
+};
+var _MichaelCombs28$elm_mdl$Material_Slider$defaultConfig = {
+	value: 50,
+	min: 0,
+	max: 100,
+	step: 1,
+	listener: _elm_lang$core$Maybe$Nothing,
+	disabled: false,
+	inner: {ctor: '[]'}
+};
+var _MichaelCombs28$elm_mdl$Material_Slider$view = function (options) {
+	var summary = A2(_MichaelCombs28$elm_mdl$Material_Options$collect, _MichaelCombs28$elm_mdl$Material_Slider$defaultConfig, options);
+	var config = summary.config;
+	var fraction = (config.value - config.min) / (config.max - config.min);
+	var lower = A2(
+		_elm_lang$core$Basics_ops['++'],
+		_elm_lang$core$Basics$toString(fraction),
+		' 1 0%');
+	var upper = A2(
+		_elm_lang$core$Basics_ops['++'],
+		_elm_lang$core$Basics$toString(1 - fraction),
+		' 1 0%');
+	var background = A3(
+		_MichaelCombs28$elm_mdl$Material_Options$styled,
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _MichaelCombs28$elm_mdl$Material_Options$cs('mdl-slider__background-flex'),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A3(
+				_MichaelCombs28$elm_mdl$Material_Options$styled,
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _MichaelCombs28$elm_mdl$Material_Options$cs('mdl-slider__background-lower'),
+					_1: {
+						ctor: '::',
+						_0: A2(_MichaelCombs28$elm_mdl$Material_Options$css, 'flex', lower),
+						_1: {ctor: '[]'}
+					}
+				},
+				{ctor: '[]'}),
+			_1: {
+				ctor: '::',
+				_0: A3(
+					_MichaelCombs28$elm_mdl$Material_Options$styled,
+					_elm_lang$html$Html$div,
+					{
+						ctor: '::',
+						_0: _MichaelCombs28$elm_mdl$Material_Options$cs('mdl-slider__background-upper'),
+						_1: {
+							ctor: '::',
+							_0: A2(_MichaelCombs28$elm_mdl$Material_Options$css, 'flex', upper),
+							_1: {ctor: '[]'}
+						}
+					},
+					{ctor: '[]'}),
+				_1: {ctor: '[]'}
+			}
+		});
+	var listeners = A2(
+		_elm_lang$core$Maybe$withDefault,
+		_MichaelCombs28$elm_mdl$Material_Options$nop,
+		A2(
+			_elm_lang$core$Maybe$map,
+			function (f) {
+				return _MichaelCombs28$elm_mdl$Material_Options$many(
+					A2(
+						_elm_lang$core$List$map,
+						_MichaelCombs28$elm_mdl$Material_Options_Internal$attribute,
+						{
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html_Events$on,
+								'change',
+								A2(_elm_lang$core$Json_Decode$map, f, _MichaelCombs28$elm_mdl$Material_Slider$floatVal)),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html_Events$on,
+									'input',
+									A2(_elm_lang$core$Json_Decode$map, f, _MichaelCombs28$elm_mdl$Material_Slider$floatVal)),
+								_1: {ctor: '[]'}
+							}
+						}));
+			},
+			config.listener));
+	return A5(
+		_MichaelCombs28$elm_mdl$Material_Options$apply,
+		summary,
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _MichaelCombs28$elm_mdl$Material_Options$cs('mdl-slider__container'),
+			_1: {ctor: '[]'}
+		},
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: A4(
+				_MichaelCombs28$elm_mdl$Material_Options$styled_,
+				_elm_lang$html$Html$input,
+				{
+					ctor: '::',
+					_0: _MichaelCombs28$elm_mdl$Material_Options$cs('mdl-slider'),
+					_1: {
+						ctor: '::',
+						_0: _MichaelCombs28$elm_mdl$Material_Options$cs('mdl-js-slider'),
+						_1: {
+							ctor: '::',
+							_0: _MichaelCombs28$elm_mdl$Material_Options$cs('is-upgraded'),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_MichaelCombs28$elm_mdl$Material_Options$when,
+									_MichaelCombs28$elm_mdl$Material_Options$cs('is-lowest-value'),
+									_elm_lang$core$Native_Utils.eq(fraction, 0)),
+								_1: {
+									ctor: '::',
+									_0: listeners,
+									_1: {
+										ctor: '::',
+										_0: _MichaelCombs28$elm_mdl$Material_Options$disabled(config.disabled),
+										_1: {
+											ctor: '::',
+											_0: A2(_MichaelCombs28$elm_mdl$Material_Options$css, 'padding', '8px 0'),
+											_1: {
+												ctor: '::',
+												_0: _MichaelCombs28$elm_mdl$Material_Options$many(config.inner),
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$type_('range'),
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$max(
+							_elm_lang$core$Basics$toString(config.max)),
+						_1: {
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$min(
+								_elm_lang$core$Basics$toString(config.min)),
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$step(
+									_elm_lang$core$Basics$toString(config.step)),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$value(
+										_elm_lang$core$Basics$toString(config.value)),
+									_1: {
+										ctor: '::',
+										_0: _MichaelCombs28$elm_mdl$Material_Helpers$blurOn('mouseup'),
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				{ctor: '[]'}),
+			_1: {
+				ctor: '::',
+				_0: background,
+				_1: {ctor: '[]'}
+			}
+		});
+};
+var _MichaelCombs28$elm_mdl$Material_Slider$Config = F7(
+	function (a, b, c, d, e, f, g) {
+		return {value: a, min: b, max: c, step: d, listener: e, disabled: f, inner: g};
+	});

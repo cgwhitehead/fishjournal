@@ -1,0 +1,250 @@
+var _MichaelCombs28$elm_mdl$Material_Options$id = function (_p0) {
+	return _MichaelCombs28$elm_mdl$Material_Options_Internal$Attribute(
+		_elm_lang$html$Html_Attributes$id(_p0));
+};
+var _MichaelCombs28$elm_mdl$Material_Options$attr = _MichaelCombs28$elm_mdl$Material_Options_Internal$Attribute;
+var _MichaelCombs28$elm_mdl$Material_Options$attribute = _MichaelCombs28$elm_mdl$Material_Options_Internal$Attribute;
+var _MichaelCombs28$elm_mdl$Material_Options$stylesheet = function (css) {
+	return A3(
+		_elm_lang$html$Html$node,
+		'style',
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html$text(css),
+			_1: {ctor: '[]'}
+		});
+};
+var _MichaelCombs28$elm_mdl$Material_Options$data = F2(
+	function (key, val) {
+		return _MichaelCombs28$elm_mdl$Material_Options_Internal$Attribute(
+			A2(
+				_elm_lang$html$Html_Attributes$attribute,
+				A2(_elm_lang$core$Basics_ops['++'], 'data-', key),
+				val));
+	});
+var _MichaelCombs28$elm_mdl$Material_Options$set = _MichaelCombs28$elm_mdl$Material_Options_Internal$Set;
+var _MichaelCombs28$elm_mdl$Material_Options$inner = function (options) {
+	return _MichaelCombs28$elm_mdl$Material_Options$set(
+		function (c) {
+			return _elm_lang$core$Native_Utils.update(
+				c,
+				{
+					inner: A2(_elm_lang$core$Basics_ops['++'], options, c.inner)
+				});
+		});
+};
+var _MichaelCombs28$elm_mdl$Material_Options$nop = _MichaelCombs28$elm_mdl$Material_Options_Internal$None;
+var _MichaelCombs28$elm_mdl$Material_Options$when = F2(
+	function (prop, guard) {
+		return guard ? prop : _MichaelCombs28$elm_mdl$Material_Options$nop;
+	});
+var _MichaelCombs28$elm_mdl$Material_Options$maybe = function (prop) {
+	return A2(_elm_lang$core$Maybe$withDefault, _MichaelCombs28$elm_mdl$Material_Options$nop, prop);
+};
+var _MichaelCombs28$elm_mdl$Material_Options$many = _MichaelCombs28$elm_mdl$Material_Options_Internal$Many;
+var _MichaelCombs28$elm_mdl$Material_Options$css = F2(
+	function (key, value) {
+		return _MichaelCombs28$elm_mdl$Material_Options_Internal$CSS(
+			{ctor: '_Tuple2', _0: key, _1: value});
+	});
+var _MichaelCombs28$elm_mdl$Material_Options$center = _MichaelCombs28$elm_mdl$Material_Options$many(
+	{
+		ctor: '::',
+		_0: A2(_MichaelCombs28$elm_mdl$Material_Options$css, 'display', 'flex'),
+		_1: {
+			ctor: '::',
+			_0: A2(_MichaelCombs28$elm_mdl$Material_Options$css, 'align-items', 'center'),
+			_1: {
+				ctor: '::',
+				_0: A2(_MichaelCombs28$elm_mdl$Material_Options$css, 'justify-content', 'center'),
+				_1: {ctor: '[]'}
+			}
+		}
+	});
+var _MichaelCombs28$elm_mdl$Material_Options$scrim = function (opacity) {
+	return A2(
+		_MichaelCombs28$elm_mdl$Material_Options$css,
+		'background',
+		A2(
+			_elm_lang$core$Basics_ops['++'],
+			'linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, ',
+			A2(
+				_elm_lang$core$Basics_ops['++'],
+				_elm_lang$core$Basics$toString(opacity),
+				'))')));
+};
+var _MichaelCombs28$elm_mdl$Material_Options$cs = function (c) {
+	return _MichaelCombs28$elm_mdl$Material_Options_Internal$Class(c);
+};
+var _MichaelCombs28$elm_mdl$Material_Options$disabled = function (v) {
+	return _MichaelCombs28$elm_mdl$Material_Options_Internal$Attribute(
+		_elm_lang$html$Html_Attributes$disabled(v));
+};
+var _MichaelCombs28$elm_mdl$Material_Options$addAttributes = F2(
+	function (summary, attrs) {
+		return A2(
+			_elm_lang$core$Basics_ops['++'],
+			summary.attrs,
+			A2(
+				_elm_lang$core$Basics_ops['++'],
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$style(summary.css),
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class(
+							A2(_elm_lang$core$String$join, ' ', summary.classes)),
+						_1: {ctor: '[]'}
+					}
+				},
+				attrs));
+	});
+var _MichaelCombs28$elm_mdl$Material_Options$collect1_ = F2(
+	function (options, acc) {
+		var _p1 = options;
+		switch (_p1.ctor) {
+			case 'Class':
+				return _elm_lang$core$Native_Utils.update(
+					acc,
+					{
+						classes: {ctor: '::', _0: _p1._0, _1: acc.classes}
+					});
+			case 'CSS':
+				return _elm_lang$core$Native_Utils.update(
+					acc,
+					{
+						css: {ctor: '::', _0: _p1._0, _1: acc.css}
+					});
+			case 'Attribute':
+				return _elm_lang$core$Native_Utils.update(
+					acc,
+					{
+						attrs: {ctor: '::', _0: _p1._0, _1: acc.attrs}
+					});
+			case 'Internal':
+				return _elm_lang$core$Native_Utils.update(
+					acc,
+					{
+						attrs: A2(
+							_elm_lang$core$Basics_ops['++'],
+							acc.attrs,
+							{
+								ctor: '::',
+								_0: _p1._0,
+								_1: {ctor: '[]'}
+							})
+					});
+			case 'Many':
+				return A3(_elm_lang$core$List$foldl, _MichaelCombs28$elm_mdl$Material_Options$collect1_, acc, _p1._0);
+			case 'Set':
+				return acc;
+			default:
+				return acc;
+		}
+	});
+var _MichaelCombs28$elm_mdl$Material_Options$collect1 = F2(
+	function (option, acc) {
+		var _p2 = option;
+		switch (_p2.ctor) {
+			case 'Class':
+				return _elm_lang$core$Native_Utils.update(
+					acc,
+					{
+						classes: {ctor: '::', _0: _p2._0, _1: acc.classes}
+					});
+			case 'CSS':
+				return _elm_lang$core$Native_Utils.update(
+					acc,
+					{
+						css: {ctor: '::', _0: _p2._0, _1: acc.css}
+					});
+			case 'Internal':
+				return _elm_lang$core$Native_Utils.update(
+					acc,
+					{
+						attrs: A2(
+							_elm_lang$core$Basics_ops['++'],
+							acc.attrs,
+							{
+								ctor: '::',
+								_0: _p2._0,
+								_1: {ctor: '[]'}
+							})
+					});
+			case 'Attribute':
+				return _elm_lang$core$Native_Utils.update(
+					acc,
+					{
+						attrs: {ctor: '::', _0: _p2._0, _1: acc.attrs}
+					});
+			case 'Many':
+				return A3(_elm_lang$core$List$foldl, _MichaelCombs28$elm_mdl$Material_Options$collect1, acc, _p2._0);
+			case 'Set':
+				return _elm_lang$core$Native_Utils.update(
+					acc,
+					{
+						config: _p2._0(acc.config)
+					});
+			default:
+				return acc;
+		}
+	});
+var _MichaelCombs28$elm_mdl$Material_Options$recollect = _elm_lang$core$List$foldl(_MichaelCombs28$elm_mdl$Material_Options$collect1);
+var _MichaelCombs28$elm_mdl$Material_Options$apply = F4(
+	function (summary, ctor, options, attrs) {
+		return ctor(
+			A2(
+				_MichaelCombs28$elm_mdl$Material_Options$addAttributes,
+				A2(_MichaelCombs28$elm_mdl$Material_Options$recollect, summary, options),
+				attrs));
+	});
+var _MichaelCombs28$elm_mdl$Material_Options$Summary = F4(
+	function (a, b, c, d) {
+		return {classes: a, css: b, attrs: c, config: d};
+	});
+var _MichaelCombs28$elm_mdl$Material_Options$collect = function (_p3) {
+	return _MichaelCombs28$elm_mdl$Material_Options$recollect(
+		A4(
+			_MichaelCombs28$elm_mdl$Material_Options$Summary,
+			{ctor: '[]'},
+			{ctor: '[]'},
+			{ctor: '[]'},
+			_p3));
+};
+var _MichaelCombs28$elm_mdl$Material_Options$collect_ = A2(
+	_elm_lang$core$List$foldl,
+	_MichaelCombs28$elm_mdl$Material_Options$collect1_,
+	A4(
+		_MichaelCombs28$elm_mdl$Material_Options$Summary,
+		{ctor: '[]'},
+		{ctor: '[]'},
+		{ctor: '[]'},
+		{ctor: '_Tuple0'}));
+var _MichaelCombs28$elm_mdl$Material_Options$styled = F2(
+	function (ctor, props) {
+		return ctor(
+			A2(
+				_MichaelCombs28$elm_mdl$Material_Options$addAttributes,
+				_MichaelCombs28$elm_mdl$Material_Options$collect_(props),
+				{ctor: '[]'}));
+	});
+var _MichaelCombs28$elm_mdl$Material_Options$div = _MichaelCombs28$elm_mdl$Material_Options$styled(_elm_lang$html$Html$div);
+var _MichaelCombs28$elm_mdl$Material_Options$span = _MichaelCombs28$elm_mdl$Material_Options$styled(_elm_lang$html$Html$span);
+var _MichaelCombs28$elm_mdl$Material_Options$styled_ = F3(
+	function (ctor, props, attrs) {
+		return ctor(
+			A2(
+				_MichaelCombs28$elm_mdl$Material_Options$addAttributes,
+				_MichaelCombs28$elm_mdl$Material_Options$collect_(props),
+				attrs));
+	});
+var _MichaelCombs28$elm_mdl$Material_Options$img = F2(
+	function (options, attrs) {
+		return A4(
+			_MichaelCombs28$elm_mdl$Material_Options$styled_,
+			_elm_lang$html$Html$img,
+			options,
+			attrs,
+			{ctor: '[]'});
+	});

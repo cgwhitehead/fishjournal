@@ -1,0 +1,195 @@
+var _MichaelCombs28$elm_parts$Parts$map2nd = F2(
+	function (f, _p0) {
+		var _p1 = _p0;
+		return {
+			ctor: '_Tuple2',
+			_0: _p1._0,
+			_1: f(_p1._1)
+		};
+	});
+var _MichaelCombs28$elm_parts$Parts$map1st = F2(
+	function (f, _p2) {
+		var _p3 = _p2;
+		return {
+			ctor: '_Tuple2',
+			_0: f(_p3._0),
+			_1: _p3._1
+		};
+	});
+var _MichaelCombs28$elm_parts$Parts$generalize = F4(
+	function (upd, f, m, c) {
+		return A2(
+			_MichaelCombs28$elm_parts$Parts$map2nd,
+			_elm_lang$core$Platform_Cmd$map(f),
+			A2(
+				_MichaelCombs28$elm_parts$Parts$map1st,
+				_elm_lang$core$Maybe$Just,
+				A2(upd, m, c)));
+	});
+var _MichaelCombs28$elm_parts$Parts$update_ = F2(
+	function (_p4, c) {
+		var _p5 = _p4;
+		return _p5._0(c);
+	});
+var _MichaelCombs28$elm_parts$Parts$update = F2(
+	function (_p6, c) {
+		var _p7 = _p6;
+		return A2(
+			_MichaelCombs28$elm_parts$Parts$map1st,
+			_elm_lang$core$Maybe$withDefault(c),
+			_p7._0(c));
+	});
+var _MichaelCombs28$elm_parts$Parts$indexed = F3(
+	function (get, set, model0) {
+		return {
+			ctor: '_Tuple2',
+			_0: F2(
+				function (idx, c) {
+					return A2(
+						_elm_lang$core$Maybe$withDefault,
+						model0,
+						A2(
+							_elm_lang$core$Dict$get,
+							idx,
+							get(c)));
+				}),
+			_1: F3(
+				function (idx, model, c) {
+					return A2(
+						set,
+						A3(
+							_elm_lang$core$Dict$insert,
+							idx,
+							model,
+							get(c)),
+						c);
+				})
+		};
+	});
+var _MichaelCombs28$elm_parts$Parts$accessors = F4(
+	function (get0, set0, model0, idx) {
+		var _p8 = A3(_MichaelCombs28$elm_parts$Parts$indexed, get0, set0, model0);
+		var get = _p8._0;
+		var set = _p8._1;
+		return {
+			get: get(idx),
+			set: set(idx),
+			map: F2(
+				function (f, c) {
+					return A3(
+						_elm_lang$core$Basics$flip,
+						set(idx),
+						c,
+						f(
+							A2(get, idx, c)));
+				}),
+			reset: function (c) {
+				return function (m) {
+					return A2(set0, m, c);
+				}(
+					A2(
+						_elm_lang$core$Dict$remove,
+						idx,
+						get0(c)));
+			}
+		};
+	});
+var _MichaelCombs28$elm_parts$Parts$embedUpdate = F6(
+	function (get, set, update, f, msg, c) {
+		return A2(
+			_MichaelCombs28$elm_parts$Parts$map1st,
+			_elm_lang$core$Maybe$map(
+				A2(_elm_lang$core$Basics$flip, set, c)),
+			A3(
+				update,
+				f,
+				msg,
+				get(c)));
+	});
+var _MichaelCombs28$elm_parts$Parts$embedView = F2(
+	function (get, view) {
+		return function (_p9) {
+			return view(
+				get(_p9));
+		};
+	});
+var _MichaelCombs28$elm_parts$Parts$Accessors = F4(
+	function (a, b, c, d) {
+		return {get: a, set: b, map: c, reset: d};
+	});
+var _MichaelCombs28$elm_parts$Parts$Msg = function (a) {
+	return {ctor: 'Msg', _0: a};
+};
+var _MichaelCombs28$elm_parts$Parts$partial = F3(
+	function (fwd, upd, msg) {
+		return _MichaelCombs28$elm_parts$Parts$Msg(
+			function (c) {
+				return A3(
+					upd,
+					function (_p10) {
+						return fwd(
+							A3(_MichaelCombs28$elm_parts$Parts$partial, fwd, upd, _p10));
+					},
+					msg,
+					c);
+			});
+	});
+var _MichaelCombs28$elm_parts$Parts$pack = F5(
+	function (update, get0, set0, model0, fwd) {
+		var _p11 = A3(_MichaelCombs28$elm_parts$Parts$indexed, get0, set0, model0);
+		var get = _p11._0;
+		var set = _p11._1;
+		return function (idx) {
+			return function (_p12) {
+				return fwd(
+					A3(
+						_MichaelCombs28$elm_parts$Parts$partial,
+						fwd,
+						A3(
+							_MichaelCombs28$elm_parts$Parts$embedUpdate,
+							get(idx),
+							set(idx),
+							update),
+						_p12));
+			};
+		};
+	});
+var _MichaelCombs28$elm_parts$Parts$create = F6(
+	function (view, update, get0, set0, model0, fwd) {
+		var embeddedUpdate = A5(_MichaelCombs28$elm_parts$Parts$pack, update, get0, set0, model0, fwd);
+		var get = _elm_lang$core$Tuple$first(
+			A3(_MichaelCombs28$elm_parts$Parts$indexed, get0, set0, model0));
+		return F2(
+			function (idx, c) {
+				return A2(
+					view,
+					embeddedUpdate(idx),
+					A2(get, idx, c));
+			});
+	});
+var _MichaelCombs28$elm_parts$Parts$pack1 = F4(
+	function (update, get, set, fwd) {
+		return function (_p13) {
+			return fwd(
+				A3(
+					_MichaelCombs28$elm_parts$Parts$partial,
+					fwd,
+					A3(_MichaelCombs28$elm_parts$Parts$embedUpdate, get, set, update),
+					_p13));
+		};
+	});
+var _MichaelCombs28$elm_parts$Parts$create1 = F5(
+	function (view, update, get, set, fwd) {
+		var embeddedUpdate = function (_p14) {
+			return fwd(
+				A3(
+					_MichaelCombs28$elm_parts$Parts$partial,
+					fwd,
+					A3(_MichaelCombs28$elm_parts$Parts$embedUpdate, get, set, update),
+					_p14));
+		};
+		return A2(
+			_MichaelCombs28$elm_parts$Parts$embedView,
+			get,
+			view(embeddedUpdate));
+	});

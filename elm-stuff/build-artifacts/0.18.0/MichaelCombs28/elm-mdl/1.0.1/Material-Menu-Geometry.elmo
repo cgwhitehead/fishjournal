@@ -1,0 +1,30 @@
+var _MichaelCombs28$elm_mdl$Material_Menu_Geometry$Geometry = F5(
+	function (a, b, c, d, e) {
+		return {button: a, menu: b, container: c, offsetTops: d, offsetHeights: e};
+	});
+var _MichaelCombs28$elm_mdl$Material_Menu_Geometry$Element = F4(
+	function (a, b, c, d) {
+		return {offsetTop: a, offsetLeft: b, offsetHeight: c, bounds: d};
+	});
+var _MichaelCombs28$elm_mdl$Material_Menu_Geometry$element = A5(_elm_lang$core$Json_Decode$map4, _MichaelCombs28$elm_mdl$Material_Menu_Geometry$Element, _MichaelCombs28$elm_dom$DOM$offsetTop, _MichaelCombs28$elm_dom$DOM$offsetLeft, _MichaelCombs28$elm_dom$DOM$offsetHeight, _MichaelCombs28$elm_dom$DOM$boundingClientRect);
+var _MichaelCombs28$elm_mdl$Material_Menu_Geometry$decode = A6(
+	_elm_lang$core$Json_Decode$map5,
+	_MichaelCombs28$elm_mdl$Material_Menu_Geometry$Geometry,
+	_MichaelCombs28$elm_dom$DOM$target(_MichaelCombs28$elm_mdl$Material_Menu_Geometry$element),
+	_MichaelCombs28$elm_dom$DOM$target(
+		_MichaelCombs28$elm_dom$DOM$nextSibling(
+			A2(_MichaelCombs28$elm_dom$DOM$childNode, 1, _MichaelCombs28$elm_mdl$Material_Menu_Geometry$element))),
+	_MichaelCombs28$elm_dom$DOM$target(
+		_MichaelCombs28$elm_dom$DOM$nextSibling(_MichaelCombs28$elm_mdl$Material_Menu_Geometry$element)),
+	_MichaelCombs28$elm_dom$DOM$target(
+		_MichaelCombs28$elm_dom$DOM$nextSibling(
+			A2(
+				_MichaelCombs28$elm_dom$DOM$childNode,
+				1,
+				_MichaelCombs28$elm_dom$DOM$childNodes(_MichaelCombs28$elm_dom$DOM$offsetTop)))),
+	_MichaelCombs28$elm_dom$DOM$target(
+		_MichaelCombs28$elm_dom$DOM$nextSibling(
+			A2(
+				_MichaelCombs28$elm_dom$DOM$childNode,
+				1,
+				_MichaelCombs28$elm_dom$DOM$childNodes(_MichaelCombs28$elm_dom$DOM$offsetHeight)))));

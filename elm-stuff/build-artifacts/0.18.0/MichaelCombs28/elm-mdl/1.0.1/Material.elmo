@@ -1,0 +1,47 @@
+var _MichaelCombs28$elm_mdl$Material$init = function (lift) {
+	return _MichaelCombs28$elm_mdl$Material_Layout$sub0(lift);
+};
+var _MichaelCombs28$elm_mdl$Material$subscriptions = F2(
+	function (lift, model) {
+		return _elm_lang$core$Platform_Sub$batch(
+			{
+				ctor: '::',
+				_0: A2(_MichaelCombs28$elm_mdl$Material_Layout$subs, lift, model.mdl),
+				_1: {
+					ctor: '::',
+					_0: A2(_MichaelCombs28$elm_mdl$Material_Menu$subs, lift, model.mdl),
+					_1: {ctor: '[]'}
+				}
+			});
+	});
+var _MichaelCombs28$elm_mdl$Material$update = F2(
+	function (msg, model) {
+		var helper = function (_p0) {
+			var _p1 = _p0;
+			var _p2 = _p1._0;
+			if (_p2.ctor === 'Just') {
+				return _elm_lang$core$Maybe$Just(
+					{ctor: '_Tuple2', _0: _p2._0, _1: _p1._1});
+			} else {
+				return _elm_lang$core$Maybe$Nothing;
+			}
+		};
+		return A2(
+			_elm_lang$core$Maybe$withDefault,
+			{ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none},
+			A2(
+				_elm_lang$core$Maybe$map,
+				_MichaelCombs28$elm_mdl$Material_Helpers$map1st(
+					function (mdl) {
+						return _elm_lang$core$Native_Utils.update(
+							model,
+							{mdl: mdl});
+					}),
+				helper(
+					A2(_MichaelCombs28$elm_parts$Parts$update_, msg, model.mdl))));
+	});
+var _MichaelCombs28$elm_mdl$Material$model = {button: _elm_lang$core$Dict$empty, textfield: _elm_lang$core$Dict$empty, menu: _elm_lang$core$Dict$empty, snackbar: _elm_lang$core$Maybe$Nothing, layout: _MichaelCombs28$elm_mdl$Material_Layout$defaultModel, toggles: _elm_lang$core$Dict$empty, tooltip: _elm_lang$core$Dict$empty, tabs: _elm_lang$core$Dict$empty};
+var _MichaelCombs28$elm_mdl$Material$Model = F8(
+	function (a, b, c, d, e, f, g, h) {
+		return {button: a, textfield: b, menu: c, snackbar: d, layout: e, toggles: f, tooltip: g, tabs: h};
+	});

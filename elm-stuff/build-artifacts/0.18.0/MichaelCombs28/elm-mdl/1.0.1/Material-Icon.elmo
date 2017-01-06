@@ -1,0 +1,56 @@
+var _MichaelCombs28$elm_mdl$Material_Icon$size48 = A2(_MichaelCombs28$elm_mdl$Material_Options$css, 'font-size', '48px');
+var _MichaelCombs28$elm_mdl$Material_Icon$size36 = A2(_MichaelCombs28$elm_mdl$Material_Options$css, 'font-size', '36px');
+var _MichaelCombs28$elm_mdl$Material_Icon$size24 = A2(_MichaelCombs28$elm_mdl$Material_Options$css, 'font-size', '24px');
+var _MichaelCombs28$elm_mdl$Material_Icon$size18 = A2(_MichaelCombs28$elm_mdl$Material_Options$css, 'font-size', '18px');
+var _MichaelCombs28$elm_mdl$Material_Icon$onClick = function (x) {
+	return _MichaelCombs28$elm_mdl$Material_Options$set(
+		function (config) {
+			return _elm_lang$core$Native_Utils.update(
+				config,
+				{
+					onClick: _elm_lang$core$Maybe$Just(
+						_elm_lang$html$Html_Events$onClick(x))
+				});
+		});
+};
+var _MichaelCombs28$elm_mdl$Material_Icon$defaultConfig = {onClick: _elm_lang$core$Maybe$Nothing};
+var _MichaelCombs28$elm_mdl$Material_Icon$view = F2(
+	function (name, options) {
+		var summary = A2(_MichaelCombs28$elm_mdl$Material_Options$collect, _MichaelCombs28$elm_mdl$Material_Icon$defaultConfig, options);
+		return A5(
+			_MichaelCombs28$elm_mdl$Material_Options$apply,
+			summary,
+			_elm_lang$html$Html$i,
+			{
+				ctor: '::',
+				_0: _MichaelCombs28$elm_mdl$Material_Options$cs('material-icons'),
+				_1: {ctor: '[]'}
+			},
+			A2(
+				_elm_lang$core$Maybe$withDefault,
+				{ctor: '[]'},
+				A2(
+					_elm_lang$core$Maybe$map,
+					A2(
+						_elm_lang$core$Basics$flip,
+						F2(
+							function (x, y) {
+								return {ctor: '::', _0: x, _1: y};
+							}),
+						{ctor: '[]'}),
+					summary.config.onClick)),
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html$text(name),
+				_1: {ctor: '[]'}
+			});
+	});
+var _MichaelCombs28$elm_mdl$Material_Icon$i = function (name) {
+	return A2(
+		_MichaelCombs28$elm_mdl$Material_Icon$view,
+		name,
+		{ctor: '[]'});
+};
+var _MichaelCombs28$elm_mdl$Material_Icon$Config = function (a) {
+	return {onClick: a};
+};

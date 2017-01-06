@@ -1,0 +1,469 @@
+var _user$project$Main$fishies = function (fishies) {
+	return A2(
+		_MichaelCombs28$elm_mdl$Material_List$li,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: A2(
+				_MichaelCombs28$elm_mdl$Material_List$content,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text(
+						A2(
+							_elm_lang$core$Basics_ops['++'],
+							_elm_lang$core$Basics$toString(fishies.whoCaught),
+							A2(
+								_elm_lang$core$Basics_ops['++'],
+								' - ',
+								A2(
+									_elm_lang$core$Basics_ops['++'],
+									_elm_lang$core$Basics$toString(fishies.bait),
+									A2(
+										_elm_lang$core$Basics_ops['++'],
+										' - ',
+										_elm_lang$core$Basics$toString(fishies.location)))))),
+					_1: {ctor: '[]'}
+				}),
+			_1: {ctor: '[]'}
+		});
+};
+var _user$project$Main$fishSectionList = function (model) {
+	return A2(
+		_MichaelCombs28$elm_mdl$Material_List$ul,
+		{ctor: '[]'},
+		A2(_elm_lang$core$List$map, _user$project$Main$fishies, model.fishObject));
+};
+var _user$project$Main$fishSectionHeader = A2(
+	_elm_lang$html$Html$header,
+	{ctor: '[]'},
+	{
+		ctor: '::',
+		_0: A2(
+			_elm_lang$html$Html$div,
+			{ctor: '[]'},
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html$text('Name'),
+				_1: {ctor: '[]'}
+			}),
+		_1: {
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text('Bait'),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text('Location'),
+						_1: {ctor: '[]'}
+					}),
+				_1: {ctor: '[]'}
+			}
+		}
+	});
+var _user$project$Main$fishSection = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: _user$project$Main$fishSectionList(model),
+			_1: {ctor: '[]'}
+		});
+};
+var _user$project$Main$isVisible = function (model) {
+	return _elm_lang$core$Native_Utils.eq(model.isVisible, true) ? 'visible' : 'hidden';
+};
+var _user$project$Main$emptyModel = {
+	fishObject: {ctor: '[]'},
+	caughtBy: '',
+	fishLocation: '',
+	fishBait: '',
+	isVisible: false,
+	mdl: _MichaelCombs28$elm_mdl$Material$model
+};
+var _user$project$Main$init = function (savedModel) {
+	if (_elm_lang$core$Native_Utils.cmp(
+		_elm_lang$core$List$length(savedModel),
+		0) > 0) {
+		var newModel = _elm_lang$core$Native_Utils.update(
+			_user$project$Main$emptyModel,
+			{fishObject: savedModel});
+		return A2(
+			_elm_lang$core$Platform_Cmd_ops['!'],
+			newModel,
+			{ctor: '[]'});
+	} else {
+		var newModel = _user$project$Main$emptyModel;
+		return A2(
+			_elm_lang$core$Platform_Cmd_ops['!'],
+			newModel,
+			{ctor: '[]'});
+	}
+};
+var _user$project$Main$setStorage = _elm_lang$core$Native_Platform.outgoingPort(
+	'setStorage',
+	function (v) {
+		return _elm_lang$core$Native_List.toArray(v).map(
+			function (v) {
+				return {fishId: v.fishId, whoCaught: v.whoCaught, location: v.location, bait: v.bait};
+			});
+	});
+var _user$project$Main$Model = F6(
+	function (a, b, c, d, e, f) {
+		return {fishObject: a, caughtBy: b, fishLocation: c, fishBait: d, isVisible: e, mdl: f};
+	});
+var _user$project$Main$Fishes = F4(
+	function (a, b, c, d) {
+		return {fishId: a, whoCaught: b, location: c, bait: d};
+	});
+var _user$project$Main$add = function (model) {
+	var newfish = A4(
+		_user$project$Main$Fishes,
+		_elm_lang$core$List$length(model.fishObject),
+		model.caughtBy,
+		model.fishLocation,
+		model.fishBait);
+	var newFishObject = {ctor: '::', _0: newfish, _1: model.fishObject};
+	return _elm_lang$core$Native_Utils.update(
+		model,
+		{fishObject: newFishObject});
+};
+var _user$project$Main$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		switch (_p0.ctor) {
+			case 'Caughtby':
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{caughtBy: _p0._0}),
+					{ctor: '[]'});
+			case 'Bait':
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{fishBait: _p0._0}),
+					{ctor: '[]'});
+			case 'Location':
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{fishLocation: _p0._0}),
+					{ctor: '[]'});
+			case 'Save':
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_user$project$Main$add(model),
+					{ctor: '[]'});
+			case 'Changevis':
+				return _elm_lang$core$Native_Utils.eq(model.isVisible, true) ? A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{isVisible: false}),
+					{ctor: '[]'}) : A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{isVisible: true}),
+					{ctor: '[]'});
+			default:
+				return A2(_MichaelCombs28$elm_mdl$Material$update, _p0._0, model);
+		}
+	});
+var _user$project$Main$updateWithStorage = F2(
+	function (msg, model) {
+		var _p1 = A2(_user$project$Main$update, msg, model);
+		var newModel = _p1._0;
+		var cmds = _p1._1;
+		return {
+			ctor: '_Tuple2',
+			_0: newModel,
+			_1: _elm_lang$core$Platform_Cmd$batch(
+				{
+					ctor: '::',
+					_0: _user$project$Main$setStorage(newModel.fishObject),
+					_1: {
+						ctor: '::',
+						_0: cmds,
+						_1: {ctor: '[]'}
+					}
+				})
+		};
+	});
+var _user$project$Main$Mdl = function (a) {
+	return {ctor: 'Mdl', _0: a};
+};
+var _user$project$Main$Changevis = {ctor: 'Changevis'};
+var _user$project$Main$addFish = function (model) {
+	return _MichaelCombs28$elm_mdl$Material_Scheme$top(
+		A2(
+			_elm_lang$html$Html$header,
+			{ctor: '[]'},
+			{
+				ctor: '::',
+				_0: A5(
+					_MichaelCombs28$elm_mdl$Material_Button$render,
+					_user$project$Main$Mdl,
+					{
+						ctor: '::',
+						_0: 0,
+						_1: {ctor: '[]'}
+					},
+					model.mdl,
+					{
+						ctor: '::',
+						_0: _MichaelCombs28$elm_mdl$Material_Button$raised,
+						_1: {
+							ctor: '::',
+							_0: _MichaelCombs28$elm_mdl$Material_Button$colored,
+							_1: {
+								ctor: '::',
+								_0: _MichaelCombs28$elm_mdl$Material_Button$onClick(_user$project$Main$Changevis),
+								_1: {ctor: '[]'}
+							}
+						}
+					},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text('Caught a fish'),
+						_1: {ctor: '[]'}
+					}),
+				_1: {ctor: '[]'}
+			}));
+};
+var _user$project$Main$Location = function (a) {
+	return {ctor: 'Location', _0: a};
+};
+var _user$project$Main$Bait = function (a) {
+	return {ctor: 'Bait', _0: a};
+};
+var _user$project$Main$Caughtby = function (a) {
+	return {ctor: 'Caughtby', _0: a};
+};
+var _user$project$Main$Save = {ctor: 'Save'};
+var _user$project$Main$addFishForm = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('sidenav'),
+			_1: {
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$style(
+					{
+						ctor: '::',
+						_0: {
+							ctor: '_Tuple2',
+							_0: 'visibility',
+							_1: _user$project$Main$isVisible(model)
+						},
+						_1: {ctor: '[]'}
+					}),
+				_1: {ctor: '[]'}
+			}
+		},
+		{
+			ctor: '::',
+			_0: A4(
+				_MichaelCombs28$elm_mdl$Material_Textfield$render,
+				_user$project$Main$Mdl,
+				{
+					ctor: '::',
+					_0: 1,
+					_1: {ctor: '[]'}
+				},
+				model.mdl,
+				{
+					ctor: '::',
+					_0: _MichaelCombs28$elm_mdl$Material_Textfield$label('Who caught the Fish?'),
+					_1: {
+						ctor: '::',
+						_0: _MichaelCombs28$elm_mdl$Material_Textfield$floatingLabel,
+						_1: {
+							ctor: '::',
+							_0: _MichaelCombs28$elm_mdl$Material_Textfield$onInput(_user$project$Main$Caughtby),
+							_1: {ctor: '[]'}
+						}
+					}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A4(
+					_MichaelCombs28$elm_mdl$Material_Textfield$render,
+					_user$project$Main$Mdl,
+					{
+						ctor: '::',
+						_0: 2,
+						_1: {ctor: '[]'}
+					},
+					model.mdl,
+					{
+						ctor: '::',
+						_0: _MichaelCombs28$elm_mdl$Material_Textfield$label('What bait did you use?'),
+						_1: {
+							ctor: '::',
+							_0: _MichaelCombs28$elm_mdl$Material_Textfield$floatingLabel,
+							_1: {
+								ctor: '::',
+								_0: _MichaelCombs28$elm_mdl$Material_Textfield$onInput(_user$project$Main$Bait),
+								_1: {ctor: '[]'}
+							}
+						}
+					}),
+				_1: {
+					ctor: '::',
+					_0: A4(
+						_MichaelCombs28$elm_mdl$Material_Textfield$render,
+						_user$project$Main$Mdl,
+						{
+							ctor: '::',
+							_0: 3,
+							_1: {ctor: '[]'}
+						},
+						model.mdl,
+						{
+							ctor: '::',
+							_0: _MichaelCombs28$elm_mdl$Material_Textfield$label('Where did you catch it?'),
+							_1: {
+								ctor: '::',
+								_0: _MichaelCombs28$elm_mdl$Material_Textfield$floatingLabel,
+								_1: {
+									ctor: '::',
+									_0: _MichaelCombs28$elm_mdl$Material_Textfield$onInput(_user$project$Main$Location),
+									_1: {ctor: '[]'}
+								}
+							}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A5(
+							_MichaelCombs28$elm_mdl$Material_Button$render,
+							_user$project$Main$Mdl,
+							{
+								ctor: '::',
+								_0: 4,
+								_1: {ctor: '[]'}
+							},
+							model.mdl,
+							{
+								ctor: '::',
+								_0: _MichaelCombs28$elm_mdl$Material_Button$raised,
+								_1: {
+									ctor: '::',
+									_0: _MichaelCombs28$elm_mdl$Material_Button$colored,
+									_1: {
+										ctor: '::',
+										_0: _MichaelCombs28$elm_mdl$Material_Button$onClick(_user$project$Main$Save),
+										_1: {
+											ctor: '::',
+											_0: _MichaelCombs28$elm_mdl$Material_Button$onClick(_user$project$Main$Changevis),
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							},
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html$text('Save'),
+								_1: {ctor: '[]'}
+							}),
+						_1: {ctor: '[]'}
+					}
+				}
+			}
+		});
+};
+var _user$project$Main$view = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('container'),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$h1,
+						{ctor: '[]'},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('Chris & James Most Excellent Fishing Adventure'),
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: _user$project$Main$addFish(model),
+						_1: {
+							ctor: '::',
+							_0: _user$project$Main$addFishForm(model),
+							_1: {
+								ctor: '::',
+								_0: _user$project$Main$fishSection(model),
+								_1: {ctor: '[]'}
+							}
+						}
+					}),
+				_1: {ctor: '[]'}
+			}
+		});
+};
+var _user$project$Main$main = _elm_lang$html$Html$programWithFlags(
+	{
+		init: _user$project$Main$init,
+		view: _user$project$Main$view,
+		update: _user$project$Main$updateWithStorage,
+		subscriptions: function (_p2) {
+			return _elm_lang$core$Platform_Sub$none;
+		}
+	})(
+	_elm_lang$core$Json_Decode$list(
+		A2(
+			_elm_lang$core$Json_Decode$andThen,
+			function (bait) {
+				return A2(
+					_elm_lang$core$Json_Decode$andThen,
+					function (fishId) {
+						return A2(
+							_elm_lang$core$Json_Decode$andThen,
+							function (location) {
+								return A2(
+									_elm_lang$core$Json_Decode$andThen,
+									function (whoCaught) {
+										return _elm_lang$core$Json_Decode$succeed(
+											{bait: bait, fishId: fishId, location: location, whoCaught: whoCaught});
+									},
+									A2(_elm_lang$core$Json_Decode$field, 'whoCaught', _elm_lang$core$Json_Decode$string));
+							},
+							A2(_elm_lang$core$Json_Decode$field, 'location', _elm_lang$core$Json_Decode$string));
+					},
+					A2(_elm_lang$core$Json_Decode$field, 'fishId', _elm_lang$core$Json_Decode$int));
+			},
+			A2(_elm_lang$core$Json_Decode$field, 'bait', _elm_lang$core$Json_Decode$string))));
